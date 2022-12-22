@@ -35,7 +35,8 @@ class TestLogin(unittest.TestCase):
 
     def test_password_invalid_too_short(self):
         # Password must be at least 8 character
-        self.assertFalse(login.is_valid_password(password="Abcd!23"))
+        with self.assertRaises(ValueError):
+            login.is_valid_password(password="Abcd!23")
 
     def test_password_invalid_null(self):
         with self.assertRaises(ValueError):
